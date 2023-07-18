@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchPools = createAsyncThunk("pools/fetchPools", async () => {
+export const fetchPools = createAsyncThunk("pools/fetchPools", async (props) => {
   try {
     const response = await axios.get("http://localhost:3002/pools"); 
     return response.data;
@@ -19,6 +19,19 @@ export const postPool = createAsyncThunk("pools/postPool", async (poolData) => {
   }
 });
 
+export const updatePool = createAsyncThunk(
+  "pools/updatePool",
+  async ({ poolId, poolData }) => {
+    try {
+      const response = await axios.patch(`http://localhost:3002/pools/${poolId}`, poolData); // Replace with your actual API endpoint
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to update the pool.");
+    }
+  }
+);
+
+
 const poolSlice = createSlice({
   name: "pools",
   initialState: {
@@ -28,41 +41,8 @@ const poolSlice = createSlice({
   },
   reducers: {
     get: (state, action) => {
-      console.log("state:", state, "action:", action);
       return state.data.filter((el) => el.status === action.payload);
     },
-    participate: (state, action) => {
-      console.log()
-      state.data.forEach((el) => {
-        if (action.payload.id === el.id) {
-          el.ticketValue += parseInt(action.payload.amount);
-          if (
-            el.participators.length > 0 &&
-            el.participators.includes(action.payload.address)
-          ) {
-            console.log("Already participated");
-          } else {
-            console.log("New participant");
-            el.participators.push(action.payload.address);
-          }
-        }
-      });
-    },
-    // participate: (state, action) => {
-    //   state.forEach((el) => {
-    //     if (action.payload.id === el.id) {
-    //       el.ticketValue += parseInt(action.payload.amount);
-    //       if (!el.participators.includes(action.payload.address)) {
-    //         el.participators.push(action.payload.address);
-    //       }
-    //     }
-    //   });
-    // },
-    // increaseValue: (state, action) => {
-    //   let dt = state.filter(el => el.id === action.payload.id)
-    //   dt.ticketValue += action.payload.amount
-    //   [state, ...dt]
-    // }
   },
    extraReducers: (builder) => {
     builder
@@ -87,6 +67,24 @@ const poolSlice = createSlice({
         state.data.push(action.payload);
       })
       .addCase(postPool.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(updatePool.pending, (state) => {
+        state.loading = true;
+        state.error = "";
+      })
+      .addCase(updatePool.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedPool = action.payload;
+        const existingPoolIndex = Array.from(state.data).findIndex(
+          (pool) => pool._id === updatedPool._id
+        );
+        if (existingPoolIndex !== -1) {
+          state.data[existingPoolIndex] = updatedPool;
+        }
+      })
+      .addCase(updatePool.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

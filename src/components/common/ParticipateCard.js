@@ -45,7 +45,7 @@ const ParticipateCard = (props) => {
         <div className="justify-content-between d-flex" id="value">
           <h6>Value pools</h6>
           <h6 className="text-white">
-            $ {Math.floor(props.ticketValue / 1000)}K
+            $ {Math.floor(props.valuePools ?? props.ticketValue / 1000)}K
           </h6>
         </div>
         <div className="justify-content-between d-flex" id="value">
@@ -62,7 +62,7 @@ const ParticipateCard = (props) => {
           </CUButton>
         </div>
       </div>
-      <Participate id={props.id} show={show} handleClose={handleClose} />
+      <Participate pool={props} show={show} handleClose={handleClose} />
     </div>
   );
 };

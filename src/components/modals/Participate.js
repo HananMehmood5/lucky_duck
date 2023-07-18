@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
-import { participate } from "../../redux/reducer/pools.reducer";
+import { updatePool } from "../../redux/reducer/pools.reducer";
 import "./participate.scss";
 import eth from "../../images/eth.png";
 
@@ -32,19 +32,27 @@ const CustomSelect = styled(Form.Select)`
   }
 `;
 
-const Participate = ({ id, show, handleClose }) => {
+const Participate = ({ pool, show, handleClose }) => {
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("");
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    const payload = {
-      id: id,
-      amount: amount,
-      type: type,
-      address: localStorage.getItem("address"),
-    };
-    dispatch(participate(payload));
+    const poolData = JSON.parse(JSON.stringify(pool));
+    poolData.valuePools = parseInt(pool.valuePools) > pool.ticketValue
+        ? pool.valuePools + parseInt(amount)
+        : pool.ticketValue + parseInt(amount);
+      
+    if (
+      pool.participators.length > 0 &&
+      pool.participators.includes(localStorage.getItem("address"))
+    ) {
+      console.log("Already participated");
+    } else {
+      poolData.participators.push(localStorage.getItem("address"));
+    }
+    
+    dispatch(updatePool({poolId: pool._id, poolData }));
 
     handleClose();
   };
