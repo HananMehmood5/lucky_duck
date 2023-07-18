@@ -1,0 +1,58 @@
+.pool-card {
+  font-family: 'Inter';
+  width: 322px;
+  height: 447px;
+  background: #25294C;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+  // customizing carousel-indicators
+  .carousel-indicators {
+      align-items: center;
+
+      button {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+      }
+
+      button.active {
+          width: 8px;
+          height: 8px;
+          background-color: #2EC3EF;
+          border-color: white;
+          border: 1px solid white;
+
+      }
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+      display: none;
+  }
+
+  .img-heading {
+      width: 80%;
+      margin: auto;
+
+      h3 {
+          font-size: 18px;
+          line-height: 22px;
+          font-weight: 600;
+      }
+
+      h6 {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 140%;
+          color: #8C90B7;
+      }
+      .pool-btn button{
+          justify-content: center;
+      }
+  }
+
+}

@@ -1,0 +1,18 @@
+.custom-select {
+  position: relative;
+}
+
+.select-option {
+  padding-left: 30px; /* Add spacing for the image */
+}
+
+.option-image {
+  position: absolute;
+  left: 5px; /* Adjust the positioning of the image */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Adjust the size of the image */
+  height: 20px;
+  object-fit: cover;
+  margin-right: 5px; /* Add spacing between the image and text */
+}

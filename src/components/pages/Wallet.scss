@@ -1,0 +1,123 @@
+.wallet {
+
+  text-transform: none !important;
+  height: 100vh;
+  background-size: 100% 100%;
+  background-color: #1E2142 !important;
+  color: white;
+
+  div:first-child {
+      align-items: center;
+  }
+
+  @media screen and (min-width: 635px) {
+      padding: 40px;
+
+      #id_tabbars {
+          display: flex !important;
+
+          #category {
+              height: 44px;
+          }
+      }
+  }
+
+  @media screen and (max-width: 635px) {
+      padding: 40px;
+      padding-right: 20px;
+      padding-left: 20px;
+
+      #id_tabbars {
+          display: block !important;
+
+          #category {
+              margin-top: 20px;
+              height: 45px;
+
+              #select_input {
+                  float: right;
+
+                  option {
+                      font-size: 12px;
+                  }
+              }
+          }
+
+          #id_tab {
+              // display: flex;
+              div:first-child{
+                  @media screen and (max-width:446px){
+                      display: block;
+                  }
+              }
+              .nav {
+                  .nav-item {
+                      flex-grow: 1;
+                      text-align: center;
+                  }
+              }
+          }
+      }
+  }
+  
+  .nav-link {
+      color: #9B9EB8 !important;
+  }
+
+  .nav-link.active {
+      color: white !important;
+  }
+
+  .nav-pills {
+      --bs-nav-pills-link-active-bg: #25294C !important;
+
+      .nav-item>a {
+          height: 100% !important;
+          margin: auto;
+      }
+
+      .nav-item {
+          --bs-nav-link-padding-y: 1rem !important;
+      }
+  }
+
+  .image-card {
+      margin: 10px;
+  }
+
+  #category>select {
+      color: white;
+  }
+
+  .tab-content {
+      padding: 20px;
+
+      .tab-pane.active {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(332px, 1fr)); // Update grid-template-columns
+        gap: 10px; // Add gap between cards
+
+        @media screen and (max-width: 1800px) {
+            grid-template-columns: repeat(auto-fit, minmax(332px, 1fr)); // Update grid-template-columns for smaller screens
+        }
+
+        @media screen and (max-width: 1600px) {
+            grid-template-columns: repeat(auto-fit, minmax(332px, 1fr)); // Update grid-template-columns for even smaller screens
+        }
+      }
+  }
+}
+
+.list-pool {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(332px, 1fr)); // Update grid-template-columns
+    gap: 10px; // Add gap between cards
+
+    @media screen and (max-width: 1800px) {
+        grid-template-columns: repeat(auto-fit, minmax(332px, 1fr)); // Update grid-template-columns for smaller screens
+    }
+
+    @media screen and (max-width: 1600px) {
+        grid-template-columns: repeat(auto-fit, minmax(332px, 1fr)); // Update grid-template-columns for even smaller screens
+    }
+}

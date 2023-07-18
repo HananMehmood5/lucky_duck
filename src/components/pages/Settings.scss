@@ -1,0 +1,80 @@
+.background {
+  background-color: #1E2142;
+  min-height: 100vh;
+  overflow: hidden;
+
+  .title {
+      color: white;
+      font-weight: 600px;
+      font-size: 26px;
+  }
+}
+
+.card {
+  background-color: #25294C;
+
+  .set-img {
+      width: 100px;
+      height: 100px;
+  }
+
+  #hex {
+      margin-top: 50px !important;
+      font-family: Inter;
+      font-weight: 600;
+      font-size: 26px;
+      color: white;
+  }
+  
+  #space {
+      margin-top: 30px !important;
+      font-family: Inter;
+      font-weight: 400;
+      font-size: 22px;
+      color: #8C90B7;
+
+      
+  }
+
+  .input {
+      background-color: #191C38;
+      border: 1px solid #444972;
+      border-left: none;
+      color: white;
+      outline: none;
+  }
+  
+  .input:focus {
+      outline-width: 0;
+      
+  }
+  
+  .no-left-border {
+      outline-width: 0;
+  }
+
+  #basic-addon1 {
+      background-color: #191C38;
+      border: 1px solid #444972;
+      color: #6c757d;
+      border-right: none;
+  }
+
+  .btns {
+      #cancel {
+          margin-right: 10px;
+      }
+
+      Button{
+          color: white;
+          
+      }
+
+      .btn-orange {
+          background-color: #F16922;
+      }
+
+      
+      
+  }
+}

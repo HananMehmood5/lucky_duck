@@ -1,0 +1,21 @@
+.accordion {
+  margin: 10px;
+  color: white;
+  background-color: #25294C !important;
+  border-width: 0 !important;
+  border-radius: 10px;
+}
+
+.accordion-title {
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  // border-bottom: 1px solid #8C90B7;
+}
+
+.accordion-content {
+  user-select: none;
+  border-top: 1px solid #8C90B7;
+  font-size: 16px;
+  color: #8C90B7;
+}

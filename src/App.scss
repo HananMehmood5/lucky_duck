@@ -1,0 +1,59 @@
+
+body {
+  /* overflow: hidden;  */
+  background-color: #1E2142 !important;
+  // background-color: #1E1E1E !important;
+  * {
+    font-family: Inter !important;
+  }
+}
+
+.btn {
+  text-transform: initial;
+}
+
+#divider {
+  margin: 10px;
+  height: 0px;
+  opacity: 0.15;
+  border-top: 1px solid #8C90B7;
+}
+
+@media screen and (max-width: 992px) {
+  body.modal-open {
+
+    .modal {
+      margin: auto;
+      --bs-modal-width: unset !important;
+
+    }
+
+    .register-pools {
+      width: 96%;
+      max-width: unset !important;
+
+      @media screen and (max-width: 576px) {
+
+        .upload-card {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .connect-wallet {
+      @media screen and (max-width: 576px) {
+        right: 35px;
+        top: 68px;
+      }
+      @media screen and (max-width: 447px) {
+        top: 75px;
+        left: 2.5%;
+        width: 90%;
+        #triangle{
+          left: 50%;
+        }
+      }
+    }
+  }
+}
